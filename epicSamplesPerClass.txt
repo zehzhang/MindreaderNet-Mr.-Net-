@@ -1,0 +1,53 @@
+saucepan 13329
+tap 2467
+dish 6543
+knife 3563
+bowl 4974
+teaspoon 3654
+door 2014
+drawer 1779
+fridge 2184
+lid 2138
+onion 6515
+teapot pot 3558
+glass 1987
+fork 1400
+chopping board 2846
+bag 2264
+sponge 1191
+spatula 2598
+cup 2153
+oil 1780
+bin 1150
+meat 4721
+potatoes 2915
+bottle 1442
+rice container 1803
+tomatoes 2736
+salt 1141
+table cloth 1602
+sink 1757
+pasta 2513
+food 3542
+tea box 2451
+tail carrot 2024
+fish sauce 1597
+colander 1344
+rice 1645
+garlic clove 1746
+pepper 1041
+gas 1795
+dough 1988
+eggs 1630
+cheese 1852
+bread 1224
+salad 2320
+chicken breasts 1741
+mixture 1319
+skin 1622
+packet 2687
+surface 1299
+spices 1781
+tortillas 1034
+sausages 1047
+fish curry 1297

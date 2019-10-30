@@ -56,6 +56,14 @@ from keras.utils import Sequence
 from PIL import Image
 from scipy.misc import imresize
 
+os.sys.path.append('../ssd_keras')
+from keras_layers.keras_layer_AnchorBoxes import AnchorBoxes
+from keras_layers.keras_layer_L2Normalization import L2Normalization
+from keras_layers.keras_layer_DecodeDetections import DecodeDetections
+from keras_layers.keras_layer_DecodeDetectionsFast import DecodeDetectionsFast
+from bounding_box_utils.bounding_box_utils import iou, convert_coordinates
+from ssd_encoder_decoder.matching_utils import match_bipartite_greedy, match_multi
+
 
 WEIGHTS_PATH_TH = 'https://dl.dropboxusercontent.com/s/rrp56zm347fbrdn/resnet101_weights_th.h5?dl=0'
 WEIGHTS_PATH_TF = 'https://dl.dropboxusercontent.com/s/a21lyqwgf88nz9b/resnet101_weights_tf.h5?dl=0'
@@ -3020,17 +3028,21 @@ if __name__ == "__main__":
     from keras.backend.tensorflow_backend import set_session
     config = tf.ConfigProto(allow_soft_placement=True)
     if not args.take_all:
-        print(args.take_all)
+        #print(args.take_all)
         config.gpu_options.allow_growth = True
         set_session(tf.Session(config=config))
 
 
-    NUM_CLASS = 53
+    NUM_CLASS = 53 # This is the number of classes used in rescaleTensor2() and softPredBoxClassification()
+                   # It is obtained after we run epic_preprocess()
+                   # We directly put it here as a global variable for simplicity
+                   # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class number
 
-    if args.option == 'encodeepic':
-        encodeLabelsEpic(args)
-    elif args.option == 'processepic':
-        epic_preprocess(args)
+
+    if args.option == 'processepic':
+        epic_preprocess()
+    elif args.option == 'encodeepic':
+        encodeLabelsEpic()
     elif args.option == 'preloadepic':
         epic_preload_imgs(args)
     elif args.option == 'trainepic':
