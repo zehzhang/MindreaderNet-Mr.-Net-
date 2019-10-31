@@ -1,7 +1,7 @@
 # MindreaderNet (Mr. Net)
 This is the repository for our NeurIPS19 paper:
 
-A Self Validation Network for Object-Level Human Attention Estimation
+[A Self Validation Network for Object-Level Human Attention Estimation]()
 
 If you find this repository helpful, consider citing our paper:
 
