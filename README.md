@@ -106,7 +106,7 @@ Other arguments are also available and please check the code for more details.
 python mindreaderv2_clean.py --option testepic --where_help_inside --what_help_inside --load_exist_model --load_from path_to_your_your_weight
 ```
 
-Make sure batch_size is set to 1 (or just leave it with its default value of 1).  Only supports single GPU testing is supported. We also provided the [weight](https://drive.google.com/file/d/17dfJeJs2HZ_mkCzKl-eqwa1vO8HXa52r/view?usp=sharing) we reported in our paper. Download it and put it in `your_working_directory/MindreaderNet-Mr.-Net-`, then
+Make sure batch_size is set to 1 (or just leave it with its default value of 1).  Only single GPU testing is supported. We also provided the [weight](https://drive.google.com/file/d/17dfJeJs2HZ_mkCzKl-eqwa1vO8HXa52r/view?usp=sharing) we reported in our paper. Download it and put it in `your_working_directory/MindreaderNet-Mr.-Net-`, then
 ```
 python mindreaderv2_clean.py --option testepic --where_help_inside --what_help_inside --load_exist_model --load_from ./epic_ap312.h5
 ```
