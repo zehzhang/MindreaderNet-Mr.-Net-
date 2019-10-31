@@ -3036,7 +3036,7 @@ if __name__ == "__main__":
     NUM_CLASS = 53 # This is the number of classes used in rescaleTensor2() and softPredBoxClassification()
                    # It is obtained after we run epic_preprocess()
                    # We directly put it here as a global variable for simplicity
-                   # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class number
+                   # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class numbe
 
 
     if args.option == 'processepic':
@@ -3046,8 +3046,10 @@ if __name__ == "__main__":
     elif args.option == 'preloadepic':
         epic_preload_imgs(args)
     elif args.option == 'trainepic':
+        assert args.softArgmax, 'During training, soft argmax should be used so that gradients can backpropagate properly'
         train(args)
     elif args.option == 'testepic':
+        assert args.batch_size == 1, 'During testing batch size must be set to 1'
         test(args)
     else:
         print('Invalid Option!!!')
