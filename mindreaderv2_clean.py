@@ -2447,8 +2447,13 @@ def train(args):
             if args.load_exist_model:
                 oriModel.load_weights(args.load_from, by_name=True)
             else:
-                oriModel.load_weights(
-                    '{}1_0.8_0.05_4_pretrained_ssd.h5'.format(baseFolder), by_name=True)
+
+                if os.path.exists('{}pretrained_spatial.h5'.format(baseFolder)):
+                    oriModel.load_weights(
+                        '{}pretrained_spatial.h5'.format(baseFolder), by_name=True)
+                else:
+                    oriModel.load_weights(
+                        '{}VGG.h5'.format(baseFolder), by_name=True)
 
                 oriModel.load_weights(
                     '{}rgb_stream.h5'.format(baseFolder), by_name=True)
