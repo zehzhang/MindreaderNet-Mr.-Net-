@@ -86,6 +86,12 @@ For more details about how we process our data, please refer to Section 3.5 of o
 
 ## Training
 
+Download the pretrained weights ([I3D](https://arxiv.org/pdf/1705.07750.pdf) is pretrained on [ImageNet](http://www.image-net.org/papers/imagenet_cvpr09.pdf) and [Kinetics](https://arxiv.org/abs/1705.06950), [VGG16](https://arxiv.org/abs/1409.1556) is pretrained on [ImageNet](http://www.image-net.org/papers/imagenet_cvpr09.pdf)): [I3D rgb stream](https://drive.google.com/file/d/1-e6msoYkDkHC0i_a7STqrHvBnMtS5rnE/view?usp=sharing), [I3D flow stream](https://drive.google.com/file/d/1o_mAiMYBveC-jtZFvMlYrKoK4QYvKILx/view?usp=sharing), [VGG16](https://drive.google.com/file/d/1SMarCUF10ykgH-0d7oaZbk4pl9cso84v/view?usp=sharing)
+
+We also provide the weight we obtained by pretraining the spatial branch: [pretrained_spatial_weight](https://drive.google.com/file/d/127LJsKgOQ9N7_0RGVEwIW_U00eB-wn04/view?usp=sharing). Simply download it and put it in `your_working_directory/MindreaderNet-Mr.-Net-`.
+
+To train the model
+
 ```
 python mindreaderv2_clean.py --option trainepic --batch_size B --steps_per_epoch S --where_help_inside --what_help_inside --softArgmax
 ```
