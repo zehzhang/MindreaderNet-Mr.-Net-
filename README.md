@@ -61,7 +61,7 @@ python mindreaderv2_clean.py --option extractepic
 
 Download the annotations of [EPIC_train_object_labels](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_object_labels.csv), [EPIC_train_object_action_correspondence](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_object_action_correspondence.csv) and [EPIC_train_action_labels](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_action_labels.csv) to `your_working_directory/MindreaderNet-Mr.-Net-` (We've already included them in the repository)
 
-Split the data into two sets for training and testing (This will generated two .txt files --- epic_train.txt and epic_test.txt --- listing sample information. Note that since we choose 90% of the samples randomly, you will get different training and testing list if you generate them yourself. We've already included the list files we used in the repository):
+Split the data into two sets for training and testing (This will generated two .txt files --- epic_train.txt and epic_test.txt --- listing sample information. Note that since we choose 90% of the samples randomly, you will get different training and testing lists if you generate them yourself. We've already included the list files we used in the repository):
 
 ```
 cd your_working_directory/MindreaderNet-Mr.-Net-
