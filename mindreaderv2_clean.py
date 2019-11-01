@@ -2940,6 +2940,35 @@ def epic_preload_imgs(args):
     testImgsF.close()
 
 
+def extract_from_tars(numT=6):
+
+    baseFolder = './'
+
+    def singleT(pfolderList):
+        #print(pfolderList)
+        for pfolder in pfolderList:
+            fullFolderPath = '{}EPIC_KITCHENS_2018/frames_rgb_flow/rgb/train/{}/'.format(baseFolder, pfolder)
+            for tar in os.listdir(fullFolderPath):
+                if tar[-4:] != '.tar': continue
+                if not os.path.exists(fullFolderPath + tar[:-4]):
+                    os.mkdir(fullFolderPath + tar[:-4])
+                os.system('tar -xvf {} -C {}'.format(fullFolderPath + tar, fullFolderPath + tar[:-4]))
+
+    import multiprocessing
+
+    pfolders = os.listdir('{}EPIC_KITCHENS_2018/frames_rgb_flow/rgb/train/'.format(baseFolder))
+    numPfolders = len(pfolders)
+
+    fInEachT = numPfolders // numT + 1
+
+    processes = []
+    for i in range(0, numPfolders, fInEachT):
+        p = multiprocessing.Process(target=singleT, args=(pfolders[i:min(i + numPfolders, numPfolders)],))
+        processes.append(p)
+        p.start()
+    for process in processes:
+        process.join()
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
@@ -3043,8 +3072,9 @@ if __name__ == "__main__":
                    # We directly put it here as a global variable for simplicity
                    # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class numbe
 
-
-    if args.option == 'processepic':
+    if args.option == 'extractepic':
+        extract_from_tars()
+    elif args.option == 'processepic':
         epic_preprocess()
     elif args.option == 'encodeepic':
         encodeLabelsEpic()
