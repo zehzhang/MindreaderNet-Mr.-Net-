@@ -53,7 +53,11 @@ To download EPIC-Kitchens, use the [script](https://github.com/epic-kitchens/dow
 sh download_rgb your_working_directory/MindreaderNet-Mr.-Net-
 ```
 
-It will download all the rgb frames to `your_working_directory/MindreaderNet-Mr.-Net-/EPIC_KITCHENS_2018`. Uncompress each .tar file directly to the folder where the .tar file is.
+It will download all the rgb frames to `your_working_directory/MindreaderNet-Mr.-Net-/EPIC_KITCHENS_2018`. Uncompress each .tar file by:
+
+```
+python mindreaderv2_clean.py --option extractepic
+```
 
 Download the annotations of [EPIC_train_object_labels](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_object_labels.csv), [EPIC_train_object_action_correspondence](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_object_action_correspondence.csv) and [EPIC_train_action_labels](https://github.com/epic-kitchens/annotations/blob/master/EPIC_train_action_labels.csv) to `your_working_directory/MindreaderNet-Mr.-Net-` (We've already included them in the repository)
 
