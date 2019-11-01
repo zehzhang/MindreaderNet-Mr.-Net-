@@ -45,7 +45,7 @@ In our paper two datasets are used: [ATT](http://vision.soic.indiana.edu/papers/
 
 In this repository we give an example on running our code on EPIC-Kitchens. 
 
-ATT cannot be made direct available to public due to human ethic and privacy issue. Please contact the authors (also **us**!) for the access to it. 
+ATT cannot be made directly available to public due to human ethic and privacy issues. Please contact the authors (also **us**!) for the access to it. 
 
 To download EPIC-Kitchens, use the [script](https://github.com/epic-kitchens/download-scripts/blob/master/frames_rgb_flow/download_rgb.sh) provided by the authors:
 
