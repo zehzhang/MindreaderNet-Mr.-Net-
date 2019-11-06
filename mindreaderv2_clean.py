@@ -2314,13 +2314,14 @@ def myGenerator(args, split='train', shuffle=True):
 
     n = int((args.sequence_length - 1) / 2)
 
+    batch_size = args.batch_size
 
-    frameBatch = np.empty((args.batch_size, 300, 300, 3))
-    rgbBatch = np.empty((args.batch_size, args.sequence_length, args.input_height, args.input_width, 3))
-    flowBatch = np.empty((args.batch_size, args.sequence_length, args.input_height, args.input_width, 2))
-    globalClassBatch = np.empty((args.batch_size, classNum))
-    globalAttentionBatch = np.empty((args.batch_size, 8732, 2))
-    boxBatch = np.empty((args.batch_size, 8732, 120))
+    frameBatch = np.empty((batch_size, 300, 300, 3))
+    rgbBatch = np.empty((batch_size, args.sequence_length, args.input_height, args.input_width, 3))
+    flowBatch = np.empty((batch_size, args.sequence_length, args.input_height, args.input_width, 2))
+    globalClassBatch = np.empty((batch_size, classNum))
+    globalAttentionBatch = np.empty((batch_size, 8732, 2))
+    boxBatch = np.empty((batch_size, 8732, 120))
 
     while True:
         if shuffle:
@@ -2334,7 +2335,7 @@ def myGenerator(args, split='train', shuffle=True):
             boxBatch[count, :, :] = labelData[idx, :, :]
             globalAttentionBatch[count, :, 0] = globalAttentionBatch[count, :, 1] = oneHotLabelData[idx, args.oneHotMode, :]
             count += 1
-            if count == args.batch_size:
+            if count == batch_size:
                 count = 0
                 yield [frameBatch, rgbBatch, flowBatch], [boxBatch, globalAttentionBatch[:, :, 1],
                                                           globalAttentionBatch, globalClassBatch,
@@ -2554,7 +2555,8 @@ def train(args):
                                   verbose=1,
                                   callbacks=callbacks,
                                   validation_data=validGenerator,
-                                  validation_steps=int(np.ceil(float(val_dataset_size) / args.batch_size)),
+                                  #validation_steps=int(np.ceil(float(val_dataset_size) / args.batch_size)),
+                                  validation_steps=val_dataset_size,
                                   initial_epoch=args.initial_epoch)
 
 
@@ -2624,7 +2626,7 @@ def test(args):
                        useRGBStream=True,
                        useFlowStream=True,
                        temporal_channels=[256, 256],
-                       softArgmax=True
+                       softArgmax=False
                        )
 
     plot_model(model, './debug_model.png', show_shapes=True)
@@ -3056,6 +3058,10 @@ if __name__ == "__main__":
     parser.add_argument('--softArgmax',
                         help='whether to use soft argmax in the where_help_inside module',
                         action='store_true')
+    parser.add_argument('--num_val_samples',
+                        help='specify the number of validation samples, default to the whole val set, however, setting to a smaller number makes the validation step after each epoch faster',
+                        type=int,
+                        default=13182)
 
     args = parser.parse_args()
 
