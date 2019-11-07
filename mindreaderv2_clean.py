@@ -2555,8 +2555,8 @@ def train(args):
                                   verbose=1,
                                   callbacks=callbacks,
                                   validation_data=validGenerator,
-                                  #validation_steps=int(np.ceil(float(val_dataset_size) / args.batch_size)),
-                                  validation_steps=val_dataset_size,
+                                  validation_steps=int(np.ceil(float(val_dataset_size) / args.batch_size)),
+                                  #validation_steps=val_dataset_size,
                                   initial_epoch=args.initial_epoch)
 
 
