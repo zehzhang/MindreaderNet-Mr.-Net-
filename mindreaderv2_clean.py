@@ -1877,6 +1877,15 @@ class mrLoss:
 
         return attn_loss
 
+    def global_one_hot_attn_loss(self, y_true, y_pred):
+        '''
+        Compute the loss for the attention score without hard negative mining
+        '''
+        # batch_size = tf.shape(y_pred)[0]
+        pred_attn = y_pred[:, :, 1]
+        true_attn = y_true[:, :, 1]
+        return K.categorical_crossentropy(true_attn, pred_attn)
+
 
 class SSDInputEncoder:
 
@@ -2503,9 +2512,12 @@ def train(args):
             model.load_weights(args.load_from, by_name=True)
         else:
 
-            model.load_weights(
-                '{}1_0.8_0.05_4_pretrained_ssd.h5'.format(baseFolder),
-                by_name=True)
+            if os.path.exists('{}pretrained_spatial.h5'.format(baseFolder)):
+                model.load_weights(
+                    '{}pretrained_spatial.h5'.format(baseFolder), by_name=True)
+            else:
+                model.load_weights(
+                    '{}VGG.h5'.format(baseFolder), by_name=True)
 
             model.load_weights('{}rgb_stream.h5'.format(baseFolder),
                                by_name=True)
@@ -3074,9 +3086,9 @@ if __name__ == "__main__":
 
 
     NUM_CLASS = 53 # This is the number of classes used in rescaleTensor2() and softPredBoxClassification()
-                   # It is obtained after we run epic_preprocess()
-                   # We directly put it here as a global variable for simplicity
-                   # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class numbe
+                   # It is obtained after we run epic_preprocess(). You can have a look at the file epicSamplesPerClass.txt for details
+                   # We directly put the number here as a global variable for simplicity
+                   # Of course, a more fancy way would be defining rescaleTensor2() and softPredBoxClassification() as classes and initialize them with corresponding class number
 
     if args.option == 'extractepic':
         extract_from_tars()
