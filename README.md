@@ -100,7 +100,7 @@ To train the model
 python mindreaderv2_clean.py --option trainepic --batch_size B --steps_per_epoch S --where_help_inside --what_help_inside --softArgmax
 ```
 
-We train our model on a single Titan Xp with batch size set to 4. You can specify your own batch size by setting ```--batch_size your_batch_size```. Also, the code supports multi-gpu training (haven't tested it thoroughly).
+We train our model on a single Titan Xp with batch size set to 4. You can specify your own batch size by setting ```--batch_size your_batch_size```. Also, the code supports multi-gpu training by setting your own `--num_gpu` (we haven't tested it thoroughly).
 
 When training the model, make sure you specify `--softArgmax` so that the soft verson of what→where validation is used in order to have the gradients backpropagate properly. More detains can be found in Section 3.2 of our [paper](https://arxiv.org/pdf/1910.14260.pdf).
 
