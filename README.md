@@ -6,11 +6,12 @@ This is the repository for our NeurIPS19 paper:
 If you find this repository helpful, consider citing our paper:
 
 ```
-@inproceedings{attention2019zehua, 
-    title = {A Self Validation Network for Object-Level Human Attention Estimation},
-    author = {Zehua Zhang and Chen Yu and David Crandall},
-    booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-    year = {2019}
+@inproceedings{zhang2019self,
+  title={A Self Validation Network for Object-Level Human Attention Estimation},
+  author={Zhang, Zehua and Yu, Chen and Crandall, David},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={14702--14713},
+  year={2019}
 }
 ```
 
