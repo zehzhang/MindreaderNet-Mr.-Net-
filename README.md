@@ -17,8 +17,8 @@ If you find this repository helpful, consider citing our paper:
 
 If any other mentioned work here also helps, please do cite them as well. Thanks!
 
-## Before you start...
-This code is a half-cleaned version by removing many parts with which we performed other experiments. We haven't tested it thoroughly because the data we used are removed from the local server. We are re-downloading them and will test the code once the data are ready. But before that, if you find any bugs, please let us know by either issuing a ticket or sending us an email.
+%## Before you start...
+%This code is a half-cleaned version by removing many parts with which we performed other experiments. We haven't tested it thoroughly because the data we used are removed from the local server. We are re-downloading them and will test the code once the data are ready. But before that, if you find any bugs, please let us know by either issuing a ticket or sending us an email.
 
 ## To begin with...
 ```
